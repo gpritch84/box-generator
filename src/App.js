@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import BoxCreator from './components/BoxCreator'
+import BoxDisplay from './components/BoxDisplay'
 
 function App() {
+
+  const [currentBox, setCurrentBox] = useState("")
+
+  const [boxes, setBoxes] = useState([])
+
+  const createNewBox = (newBox) => {
+    console.log("new Box", )
+    setBoxes(oldBoxes => [...oldBoxes,newBox])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BoxCreator onNewBox={createNewBox} />
+      <BoxDisplay box={boxes} />
+    </>
   );
 }
 
